@@ -15,9 +15,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        // Get the horizontal and vertical input
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
         // Move the player left or right
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
+        rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
+        //
+        if (horizontalInput > 0.01)
+        {
+            transform.localScale = Vector3.one;
 
+        }
         // Jump
         if (Input.GetKey(KeyCode.Space))
         {
